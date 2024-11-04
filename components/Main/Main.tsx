@@ -78,7 +78,7 @@ const Main = () => {
             Our Components
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["Buttons", "Cards", "Forms", "Modals", "Navbars", "Tables"].map(
+            {["Stacking Cards"].map(
               (component) => (
                 <div
                   key={component}
