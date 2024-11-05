@@ -31,7 +31,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {["Terms of Service", "Privacy Policy", "Cookie Policy", "Disclaimer"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
+                  <Link href="/legal-policy" className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
                     {item}
                   </Link>
                 </li>
