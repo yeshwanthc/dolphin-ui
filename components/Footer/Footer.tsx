@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Github } from "lucide-react"
 
@@ -17,7 +18,7 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "Components", "Documentation", "Pricing"].map((item) => (
+              {["Home", "Components", "Documentation"].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
                     {item}
