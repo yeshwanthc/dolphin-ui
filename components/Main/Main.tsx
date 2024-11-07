@@ -13,6 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 const Main = () => {
   const mainRef = useRef<HTMLDivElement>(null);
 
+  const componentsMain = [{name:"Button",url:"/components/button"}]
+
   useEffect(() => {
     if (mainRef.current) {
      
@@ -130,10 +132,13 @@ const Main = () => {
             Our Components
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["Stacking Cards"].map((component) => (
-              <div key={component} className="flex items-center p-4 border rounded-lg card">
+            {componentsMain.map((component,index) => (
+              <div key={index} className="flex items-center p-4 border rounded-lg card">
+                <a href={component.url}>
                 <Waves className="h-6 w-6 mr-2" />
-                <span>{component}</span>
+                <span>{component.name}</span>
+                </a>
+            
               </div>
             ))}
           </div>
