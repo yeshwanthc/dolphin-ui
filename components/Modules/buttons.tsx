@@ -79,7 +79,7 @@ DolphinButton.displayName = "DolphinButton"
 
 export { DolphinButton, buttonVariants }
 
-// Documentation Component
+
 const ButtonDocumentation = () => {
   return (
     <div className="space-y-8">

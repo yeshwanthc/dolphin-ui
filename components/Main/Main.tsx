@@ -65,7 +65,6 @@ const Main = () => {
 
   return (
     <main className="flex-1" ref={mainRef}>
-      {/* Main hero section */}
       <section className="container w-full py-12 md:py-24 lg:py-32 xl:py-48">
         <div className="px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
@@ -87,7 +86,7 @@ const Main = () => {
         </div>
       </section>
 
-      {/* Features section */}
+  
       <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
@@ -125,7 +124,6 @@ const Main = () => {
         </div>
       </section>
 
-      {/* Components section */}
       <section id="components" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
@@ -145,7 +143,6 @@ const Main = () => {
         </div>
       </section>
 
-      {/* CTA section */}
       <section id="cta" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">

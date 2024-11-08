@@ -41,7 +41,7 @@ const OurProcess = () => {
             key={index} 
             className={`process-card bg-white p-6 rounded-lg shadow-lg relative transition-transform duration-300 ease-in-out`} 
             style={{ 
-              top: `${index * 10}px`, 
+              transform: `translateY(-${index * 10}px)`,
               zIndex: processSteps.length - index 
             }}
           >
