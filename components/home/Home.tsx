@@ -1,6 +1,7 @@
 
 import Main from "../Main/Main";
 import OurProcess from "../Modules/stacking-cards";
+import WaveformSliderDemoPage from "../WaveForm";
 
 
 export default function HomeComponent() {
@@ -9,6 +10,7 @@ export default function HomeComponent() {
      
       <Main />
    <OurProcess />
+   <WaveformSliderDemoPage />
     </div>
   );
 }
