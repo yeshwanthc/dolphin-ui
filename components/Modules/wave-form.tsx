@@ -23,50 +23,51 @@ const WaveformSlider: React.FC<WaveformSliderProps> = ({
   const waveformRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener('loadedmetadata', () => {
-        setDuration(audioRef.current!.duration)
-      })
-      audioRef.current.addEventListener('timeupdate', () => {
-        setCurrentTime(audioRef.current!.currentTime)
-      })
+    const audio = audioRef.current;
+    if (audio) {
+      const updateDuration = () => setDuration(audio.duration);
+      const updateCurrentTime = () => setCurrentTime(audio.currentTime);
+
+      audio.addEventListener('loadedmetadata', updateDuration);
+      audio.addEventListener('timeupdate', updateCurrentTime);
+
+      return () => {
+        audio.removeEventListener('loadedmetadata', updateDuration);
+        audio.removeEventListener('timeupdate', updateCurrentTime);
+      }
     }
   }, [])
 
   const togglePlayPause = () => {
     if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause()
-      } else {
-        audioRef.current.play()
-      }
-      setIsPlaying(!isPlaying)
+      isPlaying ? audioRef.current.pause() : audioRef.current.play();
+      setIsPlaying(!isPlaying);
     }
   }
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     if (waveformRef.current && audioRef.current) {
-      const rect = waveformRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const seekPercentage = x / rect.width
-      audioRef.current.currentTime = seekPercentage * duration
+      const rect = waveformRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const seekPercentage = x / rect.width;
+      audioRef.current.currentTime = seekPercentage * duration;
     }
   }
 
   const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 
   const skip = (seconds: number) => {
     if (audioRef.current) {
-      audioRef.current.currentTime += seconds
+      audioRef.current.currentTime += seconds;
     }
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <div className="w-full max-w-3xl mx-auto bg-white rounded-lg shadow-md p-4 md:p-6">
       <audio ref={audioRef} src={audioSrc} />
       <div
         ref={waveformRef}
@@ -85,7 +86,7 @@ const WaveformSlider: React.FC<WaveformSliderProps> = ({
           />
         ))}
       </div>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4">
         <span className="text-sm text-gray-500">{formatTime(currentTime)}</span>
         <div className="flex items-center space-x-4">
           <button
@@ -118,7 +119,6 @@ const WaveformSlider: React.FC<WaveformSliderProps> = ({
 
 // Demo component to showcase the WaveformSlider
 const WaveformSliderMain: React.FC = () => {
-  // Generate some random waveform data for the demo
   const generateWaveformData = (length: number) => {
     return Array.from({ length }, () => Math.random() * 0.8 + 0.2)
   }
